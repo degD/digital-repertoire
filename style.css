@@ -23,10 +23,15 @@ body {
 }
 
 .search-results {
-    background-color: whitesmoke;
+    background-color: rgb(241, 241, 241);
     height: 90vh;
 }   
 
 .result {
+    box-sizing: border-box;
     height: 10vh;
+    padding: 20px;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
 }
