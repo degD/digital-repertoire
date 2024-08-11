@@ -10,6 +10,8 @@ fetch("songs.json")
 
         const potentialNames = [];
         const input = evt.target.value;
+        if (input == "") return; 
+
         console.log(`Searching "${input}"...`);
 
         for (const s of songs) {
