@@ -16,9 +16,8 @@ fetch("songs.json")
         console.log(`Searching "${input}"...`);
 
         // Iterate the song names and search the input as a substring
-        for (const s of songs) {
+        for (const songName in songs) {
 
-            const songName = s.name;
             const inputIndex = songName.indexOf(input);
             const resultCount = searchResults.childElementCount;
             

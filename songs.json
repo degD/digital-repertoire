@@ -1,12 +1,5 @@
-[
-    {"name": "abcde", "file": ""},
-    {"name": "lorem ipsum pizza", "file": "./songs/pizza.json"},
-    {"name": "lorem ipsum real", "file": ""},
-    {"name": "LOR", "file": ""},
-    {"name": "John Smith", "file": ""},
-    {"name": "Cat song", "file": ""},
-    {"name": "dce ABCD", "file": ""},
-    {"name": "cat cat", "file": ""},
-    {"name": "test of the rings", "file": ""},
-    {"name": "EmPTy", "file": ""}
-]
+{
+    "lorem ipsum pizza": "pizza.json",
+    "lorem ipsum": "",
+    "lorem ipsum pasta": ""
+}
