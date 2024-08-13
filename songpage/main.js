@@ -1,29 +1,31 @@
 
-console.log("Hello world!");
-
 let capo = 0, transpose = 0, size = 100;
 const scale = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
 
-document.querySelector(".capoplus").addEventListener("click", e => {
-    capo += 1;
-    document.querySelector(".capo").textContent = `Capo: ${capo}`;
-});
-document.querySelector(".capominus").addEventListener("click", e => {
-    capo -= 1;
-    document.querySelector(".capo").textContent = `Capo: ${capo}`;
-});
 
-// document.querySelector(".transposeplus").addEventListener("click", e => {
-//     transpose += 1;
-//     document.querySelector(".transpose")
-//         .textContent = `Transpose: ${scale.at(transpose%scale.length)}`;
+async function loadSongJSON(songName) {
 
-//     document.querySelectorAll(".chord").forEach(chord => {
-//         chord.textContent = chord.textContent.replace()
-//     })
-// });
-// document.querySelector(".transposeminus").addEventListener("click", e => {
-//     transpose -= 1;
-//     document.querySelector(".transpose")
-//         .textContent = `Transpose: ${scale.at(transpose%scale.length)}`;
-// });
+    const response = await fetch("../songs.json");
+    const songs = await response.json();
+    const songResponse = await fetch("../songs/" + songs[songName]);
+    const songJSON = await songResponse.json();
+    return songJSON;
+}
+
+
+function displaySongFromJSON(songName, songJSON) {
+
+
+    // Set song name as title
+    document.title = songName;
+    document.querySelector("h1").textContent = songName;
+
+
+    for (const line of songJSON) {
+        
+        console.log(line);
+    };
+}
+
+
+loadSongJSON("lorem ipsum pizza").then(j => displaySongFromJSON("lorem ipsum pizza", j));
