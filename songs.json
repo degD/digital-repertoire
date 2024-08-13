@@ -1,6 +1,6 @@
 [
     {"name": "abcde", "file": ""},
-    {"name": "lorem ipsum pizza", "file": ""},
+    {"name": "lorem ipsum pizza", "file": "./songs/pizza.json"},
     {"name": "lorem ipsum real", "file": ""},
     {"name": "LOR", "file": ""},
     {"name": "John Smith", "file": ""},
