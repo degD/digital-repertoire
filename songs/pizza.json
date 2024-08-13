@@ -1,10 +1,18 @@
 [
-    [
-        "A        B7      ", 
-        "Pizza ipsum dolor"
-    ],
-    [
-        "D      D7            F#m",
-        "Amet melted cheese large"
-    ]
+    {
+        "type": "chord",
+        "text": "A        B7      "
+    },
+    {
+        "type": "lyrics",
+        "text": "Pizza ipsum dolor"
+    },
+    {
+        "type": "chord",
+        "text": "D      D7            F#m"    
+    },
+    {
+        "type": "lyrics",
+        "text": "Amet melted cheese large"
+    }
 ]
