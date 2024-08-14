@@ -37,4 +37,88 @@ function displaySongFromJSON(songName, songJSON) {
 }
 
 
+/**
+ * Transpose a given chord by the amount of transposeAmount
+ * @param  {String} chord The chord
+ * @param  {Number} transposeAmount A positive or negative integer
+ * @return {String} Transposed chord
+ */
+function transposeChord(chord, transposeAmount) {
+
+    let tChord;
+    scale.forEach((note, i) => {
+
+        if (chord.startsWith(note))
+            tChord = scale.at((i + transposeAmount) % scale.length);
+    });
+
+    return tChord;
+}
+
+
+function transposeChordLine(chordLine, transposeAmount) {
+
+    const chordsAndIndexes = [];
+
+
+    let chord = "";
+    let startingIndex = 0;
+    let lookingForChords = true;
+    [...chordLine].forEach((c, i) => {
+
+        console.log(c, i);
+        if (c != " " && lookingForChords) {
+
+            startingIndex = i;
+            lookingForChords = false;
+            chord = c;
+        }
+        else if (c != " ") {
+
+            chord += c;
+        }
+        else if (c == " " && !lookingForChords) {
+
+            lookingForChords = true;
+            chordsAndIndexes.push([chord, startingIndex]);
+        }
+    });
+
+
+    console.log(chordsAndIndexes);
+
+
+    let tLine = "";
+    chordsAndIndexes.forEach(group => {
+
+        const chord = group[0];
+        const startingIndex = group[1];
+
+        tLine += " ".repeat(startingIndex - tLine.length);
+        tLine += transposeChord(chord, transposeAmount);
+    });
+
+
+    return tLine;
+}
+
+
+function transposeSong(songJSON) 
+{
+
+    const transposedSongJSON = [];
+
+    for (const line of songJSON) {
+        
+        if (line["type"] == "chord") {
+
+            line["text"].split(" ");
+        }
+            
+        transposedSongJSON.push()
+        
+    };
+}
+
+
 loadSongJSON("lorem ipsum pizza").then(j => displaySongFromJSON("lorem ipsum pizza", j));
