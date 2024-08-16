@@ -40,7 +40,16 @@ fetch("songs.json")
         }
 
 
+        // When clicked, make resultDiv take user to the song
+        document.querySelectorAll(".result").forEach(resultDiv => {
 
+            resultDiv.addEventListener("click", evt => {
+
+                console.log(evt.target.textContent);
+                localStorage.setItem("songName", evt.target.textContent);
+                window.location.href = "./songpage/index.html"
+            });
+        });
     }))
     .catch(error => console.log(error));
 

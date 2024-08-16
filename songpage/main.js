@@ -128,10 +128,15 @@ function transposeSong(songJSON, transposeAmount)
 }
 
 
-loadSongJSON("lorem ipsum pizza").then(j => {
-    displaySongFromJSON("lorem ipsum pizza", j);
-    setTimeout(() => {
-        const tSong = transposeSong(j, 2);
-        displaySongFromJSON("lorem ipsum pizza - 2", tSong);
-    }, 2000);
-});
+// loadSongJSON("lorem ipsum pizza").then(j => {
+//     displaySongFromJSON("lorem ipsum pizza", j);
+//     setTimeout(() => {
+//         const tSong = transposeSong(j, 2);
+//         displaySongFromJSON("lorem ipsum pizza - 2", tSong);
+//     }, 2000);
+// });
+
+
+// Load songName from the localStorage, when sent from the search page
+const songName = localStorage.getItem("songName");
+console.log(localStorage);
