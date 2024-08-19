@@ -1,9 +1,39 @@
 
 let capo = 0, transpose = 0, size = 100;
 const scale = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
-
-
 const song = document.querySelector("pre.song");
+
+
+// Operation buttons
+const capoplus = document.querySelector(".capoplus");
+const capominus = document.querySelector(".capominus");
+const transposeplus = document.querySelector(".transposeplus");
+const transposeminus = document.querySelector(".transposeminus");
+const resizeplus = document.querySelector(".resizeplus");
+const resizeminus = document.querySelector(".resizeminus");
+
+
+// Operation labels
+const capoDiv = document.querySelector(".capo");
+const transposeDiv = document.querySelector(".transpose");
+const resizeDiv = document.querySelector(".resize");
+
+
+resizeplus.addEventListener("click", evt => {
+
+    size += 20;
+    resizeDiv.textContent = `Size: ${size}%`;
+    song["style"]["font-size"] = `${size/100}rem`;
+});
+resizeminus.addEventListener("click", evt => {
+
+    size -= 20;
+    resizeDiv.textContent = `Size: ${size}%`;
+    song["style"]["font-size"] = `${size/100}rem`;
+});
+
+
+
 
 
 async function loadSongJSON(songName) {
@@ -133,5 +163,6 @@ const songName = localStorage.getItem("songName");
 console.log(localStorage);
 
 loadSongJSON(songName).then(j => {
+    
     displaySongFromJSON(songName, j);
 });
