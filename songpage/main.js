@@ -162,7 +162,25 @@ function transposeSong(songJSON, transposeAmount)
 const songName = localStorage.getItem("songName");
 console.log(localStorage);
 
+
+// Load song JSON
 loadSongJSON(songName).then(j => {
     
+    // Initial song display
     displaySongFromJSON(songName, j);
+
+
+    // Transpose operation depends song JSON data
+    transposeplus.addEventListener("click", evt => {
+
+        transpose += 1;
+        transposeDiv.textContent = `Transpose: ${scale.at(transpose%scale.length)}`
+        displaySongFromJSON(songName, transposeSong(j, transpose));
+    });
+    transposeminus.addEventListener("click", evt => {
+    
+        transpose -= 1;
+        transposeDiv.textContent = `Transpose: ${scale.at(transpose%scale.length)}`
+        displaySongFromJSON(songName, transposeSong(j, transpose));
+    });
 });
