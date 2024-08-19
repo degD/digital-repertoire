@@ -5,12 +5,21 @@ body {
     margin: 0;
 }
 
+.hero {
+    display: flex;
+    justify-content: space-between;
+    background-color: #F5004F;
+    padding: 10px;
+}
+
 h1 {
     color: #f9e400;
-    background-color: #F5004F;
     margin: 0;
-    padding: 10px;
     font-size: 50px;
+}
+
+.back-arrow {
+    width: 50px;
 }
 
 .operations {

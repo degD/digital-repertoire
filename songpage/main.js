@@ -184,3 +184,10 @@ loadSongJSON(songName).then(j => {
         displaySongFromJSON(songName, transposeSong(j, transpose));
     });
 });
+
+
+// Event listener for the back button
+document.querySelector(".back-arrow").addEventListener("click", evt => {
+
+    window.location.href = "../index.html";
+});
