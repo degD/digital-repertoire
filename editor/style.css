@@ -1,0 +1,17 @@
+
+.line-container {
+    border: 2px solid black;
+    margin: 3px;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+}
+
+button.type-button {
+    margin-right: 3px;
+}
+
+p.line-text {
+    font-size: 30px;
+    margin: 0;
+}
