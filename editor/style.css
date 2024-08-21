@@ -1,4 +1,16 @@
 
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.operations {
+    display: flex;
+    align-items: center;  
+    gap: 10px;
+}
+
 .line-container {
     border: 2px solid black;
     margin: 3px;
@@ -14,4 +26,14 @@ button.type-button {
 p.line-text {
     font-size: 30px;
     margin: 0;
+}
+
+.editable:focus {
+    outline: none;
+}
+
+.editable {
+    color: green;
+    font-style: italic;
+    font-weight: lighter;
 }
