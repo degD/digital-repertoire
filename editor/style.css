@@ -28,6 +28,11 @@ body {
     padding: 3px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+}
+
+.line-container > .line-left {
+    display: flex;
 }
 
 .chord-checkbox {
@@ -47,4 +52,8 @@ p.line-text {
     color: green;
     font-style: italic;
     font-weight: lighter;
+}
+
+.line-button > img {
+    width: 20px;
 }
