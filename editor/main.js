@@ -1,5 +1,10 @@
 
 
+// Empty line as a template
+const emptyLine = document.querySelector(".line-container").cloneNode(true);
+emptyLine.querySelector("p.line-text").textContent = "";
+
+
 function readFromEditor() {
 
     const song = [];
@@ -14,6 +19,30 @@ function readFromEditor() {
 }
 
 
+function removeAllLines() {
+    document.querySelectorAll(".line-container").forEach(l => l.remove());
+}
+
+
+function loadFromJsonToEditor(songJSON, songName) {
+
+    removeAllLines();
+    document.querySelector(".song-name").textContent = songName;
+    for (const l of songJSON) {
+
+        const newLine = emptyLine.cloneNode(true);
+        newLine.querySelector("p.line-text").textContent = l["text"];
+        if (l["type"] == "chord") {
+            newLine.querySelector(".chord-checkbox").checked = "true";
+            newLine["style"]["background"] = "lightblue";
+        }
+
+        console.log(l);
+        document.querySelector("body").appendChild(newLine);
+    }
+}
+
+
 // true if both same
 function compareSongs(song1, song2) {
 
@@ -22,6 +51,7 @@ function compareSongs(song1, song2) {
         let l1 = song1.at(i);
         let l2 = song2.at(i);
         if (l1 == undefined && l2 == undefined) return true;
+        else if (l1 == undefined || l2 == undefined) return false;
         else if (l1["text"] != l2["text"]) return false;
         i += 1;
     }
@@ -33,11 +63,10 @@ document.querySelectorAll(".chord-checkbox").forEach(b => {
     // A line is selected as a chord line
     b.addEventListener("click", evt => {
 
-
-        if (b.parentNode["style"]["background"] == "")
-            b.parentNode["style"]["background"] = "lightblue";
+        if (b.parentNode.parentNode["style"]["background"] == "")
+            b.parentNode.parentNode["style"]["background"] = "lightblue";
         else 
-            b.parentNode["style"]["background"] = "";
+            b.parentNode.parentNode["style"]["background"] = "";
     });
 });
 
