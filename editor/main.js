@@ -49,17 +49,24 @@ document.querySelector(".save").addEventListener("click", evt => {
 });
 
 
-// Check for updates at the editor every 5 seconds. 
-// Save last 10 changes for undo/redo.
-    let newSong, prevSong = readFromEditor();
-    setInterval(() => {
+let songCurrentState, songPreviousState = readFromEditor();
+const states = [songPreviousState];
+setInterval(() => {
 
-        newSong = readFromEditor();
-        if (!compareSongs(prevSong, newSong))
-            console.log("Something changed!");
-        else
-            console.log("Same and boring");
-        
-        prevSong = newSong;
+    songCurrentState = readFromEditor();
+    if (!compareSongs(songCurrentState, songPreviousState)) {
+        console.log("Something changed!");
+        states.push(songCurrentState);
+    } else {
+        console.log("Same and boring");
+    }
+    
+    songPreviousState = songCurrentState;
 
-    }, 5000);
+}, 1000);
+
+
+document.querySelector(".undo").addEventListener("click", evt => {
+
+
+});
