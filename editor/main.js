@@ -19,6 +19,11 @@ function readFromEditor() {
 }
 
 
+function readSongName() {
+    return document.querySelector(".song-name").textContent;
+}
+
+
 function removeAllLines() {
     document.querySelectorAll(".line-container").forEach(l => l.remove());
 }
@@ -84,10 +89,10 @@ setInterval(() => {
 
     songCurrentState = readFromEditor();
     if (!compareSongs(songCurrentState, songPreviousState)) {
-        console.log("Something changed!");
+        // console.log("Something changed!");
         states.push(songCurrentState);
     } else {
-        console.log("Same and boring");
+        // console.log("Same and boring");
     }
     
     songPreviousState = songCurrentState;
@@ -99,3 +104,83 @@ document.querySelector(".undo").addEventListener("click", evt => {
 
 
 });
+
+
+// Add event listeners for UP buttons
+document.querySelectorAll("button.up").forEach(b => b.addEventListener("click", evt => {
+
+    const line = b.parentNode.parentNode;
+    const prevLine = line.previousSibling.previousSibling;
+    let temp;
+
+
+    try {
+
+        // Replace line texts
+        temp = line.querySelector("p.line-text").textContent;
+        line.querySelector("p.line-text").textContent = prevLine.querySelector("p.line-text").textContent;
+        prevLine.querySelector("p.line-text").textContent = temp;
+        
+
+        // Replace chord checkboxes
+        temp = line.querySelector(".chord-checkbox").checked;
+        line.querySelector(".chord-checkbox").checked = prevLine.querySelector(".chord-checkbox").checked;
+        prevLine.querySelector(".chord-checkbox").checked = temp;
+
+
+        // Replace also background colors
+        if (line.querySelector(".chord-checkbox").checked) 
+            line["style"]["background"] = "lightblue";
+        else 
+            line["style"]["background"] = "";
+
+        if (prevLine.querySelector(".chord-checkbox").checked) 
+            prevLine["style"]["background"] = "lightblue";
+        else 
+            prevLine["style"]["background"] = "";
+
+    } catch {
+
+        return;
+    }
+}));
+
+
+// Add event listeners for DOWN buttons
+document.querySelectorAll("button.down").forEach(b => b.addEventListener("click", evt => {
+
+    const line = b.parentNode.parentNode;
+    const nextLine = line.nextSibling.nextSibling;
+    let temp;
+
+
+    try {
+
+        // Replace line texts
+        temp = line.querySelector("p.line-text").textContent;
+        line.querySelector("p.line-text").textContent = nextLine.querySelector("p.line-text").textContent;
+        nextLine.querySelector("p.line-text").textContent = temp;
+        
+
+        // Replace chord checkboxes
+        temp = line.querySelector(".chord-checkbox").checked;
+        line.querySelector(".chord-checkbox").checked = nextLine.querySelector(".chord-checkbox").checked;
+        nextLine.querySelector(".chord-checkbox").checked = temp;
+
+
+        // Replace also background colors
+        if (line.querySelector(".chord-checkbox").checked) 
+            line["style"]["background"] = "lightblue";
+        else 
+            line["style"]["background"] = "";
+
+        if (nextLine.querySelector(".chord-checkbox").checked) 
+            nextLine["style"]["background"] = "lightblue";
+        else 
+            nextLine["style"]["background"] = "";
+
+    } catch {
+
+        return;
+    }
+}));
