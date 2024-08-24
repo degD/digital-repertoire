@@ -1,8 +1,76 @@
 
 
-// Empty line as a template
-const emptyLine = document.querySelector(".line-container").cloneNode(true);
-emptyLine.querySelector("pre.line-text").textContent = "";
+function replaceLines(line1, line2) {
+
+    let temp;
+
+    try {
+
+        // Replace line texts
+        temp = line1.querySelector("pre.line-text").textContent;
+        line1.querySelector("pre.line-text").textContent = line2.querySelector("pre.line-text").textContent;
+        line2.querySelector("pre.line-text").textContent = temp;
+        
+
+        // Replace chord checkboxes
+        temp = line1.querySelector(".chord-checkbox").checked;
+        line1.querySelector(".chord-checkbox").checked = line2.querySelector(".chord-checkbox").checked;
+        line2.querySelector(".chord-checkbox").checked = temp;
+
+
+        // Replace also background colors
+        if (line1.querySelector(".chord-checkbox").checked) 
+            line1["style"]["background"] = "lightblue";
+        else 
+            line1["style"]["background"] = "";
+
+        if (line2.querySelector(".chord-checkbox").checked) 
+            line2["style"]["background"] = "lightblue";
+        else 
+            line2["style"]["background"] = "";
+
+    } catch {
+
+        return;
+    }
+}
+
+
+function createNewSongLine() {
+
+    const line = document.querySelector(".hidden.line-container").cloneNode(true);
+    line.querySelector("pre.line-text").textContent = "";
+    line.classList.remove("hidden");
+
+    line.querySelector(".up").addEventListener("click", evt => {
+
+        try {
+            const prevLine = line.previousSibling;
+            replaceLines(line, prevLine);
+        } catch { return };
+    });
+
+    line.querySelector(".down").addEventListener("click", evt => {
+
+        try {
+            const nextLine = line.nextSibling;
+            replaceLines(line, nextLine);
+        } catch { return };
+    });
+
+    line.querySelector(".new-line").addEventListener("click", evt => {
+
+        const newLine = createNewSongLine();
+        line.insertAdjacentElement("afterend", newLine);
+    });
+
+    line.querySelector(".delete").addEventListener("click", evt => {
+
+        line.remove();
+    });
+    
+    return line;
+}
 
 
 function readFromEditor() {
@@ -25,7 +93,7 @@ function readSongName() {
 
 
 function removeAllLines() {
-    document.querySelectorAll(".line-container").forEach(l => l.remove());
+    document.querySelectorAll(":not(.hidden).line-container").forEach(l => l.remove());
 }
 
 
@@ -35,7 +103,7 @@ function loadFromJsonToEditor(songJSON, songName) {
     document.querySelector(".song-name").textContent = songName;
     for (const l of songJSON) {
 
-        const newLine = emptyLine.cloneNode(true);
+        const newLine = createNewSongLine();
         newLine.querySelector("pre.line-text").textContent = l["text"];
         if (l["type"] == "chord") {
             newLine.querySelector(".chord-checkbox").checked = "true";

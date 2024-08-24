@@ -33,6 +33,7 @@ body {
 
 .line-container > .line-left {
     display: flex;
+    flex: 1;
 }
 
 .chord-checkbox {
@@ -42,6 +43,7 @@ body {
 pre.line-text {
     font-size: 30px;
     margin: 0;
+    flex: 1;
 }
 
 .editable:focus {
@@ -56,4 +58,8 @@ pre.line-text {
 
 .line-button > img {
     width: 20px;
+}
+
+.hidden {
+    display: none;
 }
