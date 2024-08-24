@@ -261,3 +261,13 @@ if (song && songName)
     loadFromJsonToEditor(song, songName);
 else
     console.log("Direct load!!!");
+
+
+// Make save button work
+document.querySelector(".save").addEventListener("click", evt => {
+
+    const name = readSongName();
+    const song = readFromEditor();
+    
+    
+});
