@@ -183,6 +183,18 @@ loadSongJSON(songName).then(j => {
         transposeDiv.textContent = `Transpose: ${scale.at(transpose%scale.length)}`
         displaySongFromJSON(songName, transposeSong(j, transpose));
     });
+
+
+    // Save songJSON so it can be sent to other pages.
+    localStorage.setItem("songJSON", JSON.stringify(j));
+    console.log(j);
+
+
+    // Launch the editor when clicked on the EDIT button
+    document.querySelector(".edit").addEventListener("click", evt => {
+
+        window.location.href = "../editor/index.html";
+    });
 });
 
 

@@ -2,7 +2,7 @@
 
 // Empty line as a template
 const emptyLine = document.querySelector(".line-container").cloneNode(true);
-emptyLine.querySelector("p.line-text").textContent = "";
+emptyLine.querySelector("pre.line-text").textContent = "";
 
 
 function readFromEditor() {
@@ -12,7 +12,7 @@ function readFromEditor() {
 
         let type = "lyrics";
         if (l.querySelector(".chord-checkbox").checked) type = "chord";
-        song.push({"type": type, "text": l.querySelector("p.line-text").textContent});
+        song.push({"type": type, "text": l.querySelector("pre.line-text").textContent});
     });
 
     return song;
@@ -36,7 +36,7 @@ function loadFromJsonToEditor(songJSON, songName) {
     for (const l of songJSON) {
 
         const newLine = emptyLine.cloneNode(true);
-        newLine.querySelector("p.line-text").textContent = l["text"];
+        newLine.querySelector("pre.line-text").textContent = l["text"];
         if (l["type"] == "chord") {
             newLine.querySelector(".chord-checkbox").checked = "true";
             newLine["style"]["background"] = "lightblue";
@@ -117,9 +117,9 @@ document.querySelectorAll("button.up").forEach(b => b.addEventListener("click", 
     try {
 
         // Replace line texts
-        temp = line.querySelector("p.line-text").textContent;
-        line.querySelector("p.line-text").textContent = prevLine.querySelector("p.line-text").textContent;
-        prevLine.querySelector("p.line-text").textContent = temp;
+        temp = line.querySelector("pre.line-text").textContent;
+        line.querySelector("pre.line-text").textContent = prevLine.querySelector("pre.line-text").textContent;
+        prevLine.querySelector("pre.line-text").textContent = temp;
         
 
         // Replace chord checkboxes
@@ -157,9 +157,9 @@ document.querySelectorAll("button.down").forEach(b => b.addEventListener("click"
     try {
 
         // Replace line texts
-        temp = line.querySelector("p.line-text").textContent;
-        line.querySelector("p.line-text").textContent = nextLine.querySelector("p.line-text").textContent;
-        nextLine.querySelector("p.line-text").textContent = temp;
+        temp = line.querySelector("pre.line-text").textContent;
+        line.querySelector("pre.line-text").textContent = nextLine.querySelector("pre.line-text").textContent;
+        nextLine.querySelector("pre.line-text").textContent = temp;
         
 
         // Replace chord checkboxes
@@ -184,3 +184,12 @@ document.querySelectorAll("button.down").forEach(b => b.addEventListener("click"
         return;
     }
 }));
+
+
+// Load song from local storage
+const song = JSON.parse(localStorage.getItem("songJSON"));
+const songName = localStorage.getItem("songName");
+if (song && songName)
+    loadFromJsonToEditor(song, songName);
+else
+    console.log("Direct load!!!");
