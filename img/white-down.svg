@@ -7,7 +7,7 @@
    viewBox="0 0 1024 1024"
    version="1.1"
    id="svg2"
-   sodipodi:docname="back-arrow.svg"
+   sodipodi:docname="white-down.svg"
    inkscape:version="1.3.2 (1:1.3.2+202404261509+091e20ef0f)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -34,11 +34,7 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="svg2" />
   <path
-     fill="#000000"
-     d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z"
-     id="path1" />
-  <path
-     fill="#000000"
-     d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z"
-     id="path2" />
+     id="path1"
+     d="m 208.04171,559.86626 a 32.040422,32.040422 0 0 0 9.385,22.655 l 288,288 a 32,32 0 0 0 45.31,0 l 288,-288 a 32.040422,32.040422 0 0 0 -45.31,-45.31 l -233.345,233.4 v -594.745 a 32,32 0 0 0 -64,0 v 594.745 l -233.345,-233.4 a 32.040422,32.040422 0 0 0 -54.695,22.655 z"
+     style="fill:#f9f9f9;stroke:#000000;stroke-opacity:1" />
 </svg>

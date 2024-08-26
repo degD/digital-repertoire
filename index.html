@@ -10,7 +10,10 @@
 
     <div class="search-container">
         <input type="text" name="search-bar" id="search-bar">
-        <img id="new-song" src="img/plus-white.svg" alt="Open new song dialogue">
+        <div class="operations">
+            <img id="blank" src="img/blank-page.svg" alt="Open blank editor page">
+            <img id="import-div" src="img/white-down.svg" alt="Import a single file">
+        </div>
     </div>
 
     <div class="search-results">
@@ -24,6 +27,8 @@
         <div class="result"></div>
         <div class="result"></div>
     </div>
+
+    <input type="file" class="file-selector" id="import">
 
     <script src="main.js"></script>
 </body>

@@ -54,11 +54,17 @@ fetch("songs.json")
     .catch(error => console.log(error));
 
 
-// Show new song dialogue. For now, just open up the editor
-document.querySelector("#new-song").addEventListener("click", evt => {
+// Open a blank page in editor
+document.querySelector("#blank").addEventListener("click", evt => {
 
     localStorage.removeItem("songName");
     localStorage.removeItem("songJSON");
-    console.log(localStorage);
     window.location.href = "editor/index.html";
+});
+
+
+// Open file selector window by sending a CLICK to hidden input element
+document.querySelector("#import-div").addEventListener("click", evt => {
+
+    document.querySelector("#import").click();
 });
